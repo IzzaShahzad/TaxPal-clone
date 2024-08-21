@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+        rel="stylesheet">
+        
+    <title>TaxPal</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .buttons {
+            gap: 10px;
+            display: flex;
+        }
+
+        nav ul {
+            color: gray;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: medium;
+            margin-bottom: 30px;
+        }
+
+        .article {
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: 150px;
+        }
+
+        .article-buttons {
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            margin-bottom: 130px;
+        }
+
+        h1 {
+            font-size: 5rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: x-large;
+            text-align: center;
+        }
+
+        .logos {
+            display: flex;
+            justify-content: center;
+        }
+
+        .logos img {
+            margin: 0 10px;
+        }
+
+        .black-button {
+            width: 150px;
+            height: 30px;
+            border-radius: 20px;
+        }
+
+        .black-button:hover {
+            background-color: black;
+            color: white;
+            cursor: pointer;
+        }
+
+        .transparent-button {
+            border: 1px solid rgb(165, 161, 161);
+            cursor: pointer;
+            width: 150px;
+            height: 32px;
+            border-radius: 20px;
+        }
+
+        .signin-button {
+            cursor: pointer;
+            border: none;
+        }
+
+        .blue-button {
+            border-radius: 20px;
+            height: 30px;
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+        }
+
+        .form-container {
+            display: none;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 50px auto;
+            max-width: 400px;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container form input,
+        .form-container form select {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-container form button {
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .form-container form button:hover {
+            background-color: darkblue;
+        }
+
+        .signup-link {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .signup-link a {
+            color: blue;
+            cursor: pointer;
+        }
+
+        .first-last-name {
+            display: flex;
+            gap: 10px;
+        }
+
+        .main-section {
+            display: flex;
+            margin: 20px;
+            
+        }
+
+        .side-menu {
+            width: 200px;
+            padding: 20px;
+            background: #f4f4f4;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .side-menu button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: #ddd;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .side-menu button:hover {
+            background: #ccc;
+        }
+
+        .details-card {
+            flex: 1;
+            padding: 20px;
+            margin-left: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .details-card table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .details-card th, .details-card td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .details-card th {
+            background-color: #f4f4f4;
+        }
+        .three-columns {
+            display: flex;
+            justify-content: space-around;
+            margin: 40px 0;
+        }
+
+        .three-columns .column {
+            width: 30%;
+            color: black;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+        }
+
+         .three-columns .column:hover {
+            background-color: #0056b3;
+        }
+
+        .image-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            min-height: 200px;
+            width: 100%;
+        }
+
+        .image-display img {
+            max-width: 100%;
+            max-height: 100%;
+            display: none;
+        }
+
+        .image-display img.active {
+            display: block;
+        }
+        .testimonial-section {
+    margin: 40px 0;
+}
+
+.testimonial-card {
+    background-color: rgb(207, 224, 240);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.customer-info {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    justify-content: center;
+    gap: 20px;
+}
+
+.customer-img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.customer-info p {
+    margin: 0;
+    color: black;
+}
+.pricing-section {
+    padding: 50px 20px;
+    
+    color: #fff;
+    text-align: center;
+}
+
+.pricing-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.pricing-column {
+    background-color: rgb(2, 2, 51);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    width: 30%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.pricing-column-highlight {
+    background-color: #0056b3;
+    color: white;
+    transform: scale(1.05);
+}
+
+.pricing-column h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.pricing-column p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.pricing-column ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.pricing-column ul li {
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+.get-started-button {
+    text-align: center;
+    background-color: #fff;
+    color: #0056b3;
+    border: 2px solid #0056b3;
+    border-radius: 50px;
+    padding: 15px 90px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pricing-column-highlight .get-started-button {
+    background-color: white;
+    color: #0056b3;
+    border: 2px solid white;
+}
+
+.get-started-button:hover {
+    background-color: #0056b3;
+    color: white;
+}
+.faq-section {
+    padding: 40px 20px;
+}
+
+.faq-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.faq-column {
+    flex: 1;
+    min-width: calc(33.333% - 20px); /* 3 columns with gap */
+}
+
+.faq-item {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.faq-item h3 {
+    margin: 0 0 10px;
+    font-size: 1.2rem;
+}
+
+.faq-item p {
+    margin: 0;
+    text-align: left;
+    font-size: 1rem;
+}
+.end-section {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.brand-title {
+    font-size: 2.5rem;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.main-navigation {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.main-navigation ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.main-navigation ul li {
+    display: inline-block;
+    margin: 0 15px; /* Space between menu items */
+}
+
+.main-navigation ul li a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.main-navigation ul li a:hover {
+    color: #007BFF; /* Change the color on hover, adjust as needed */
+}
+@media screen and (max-width: 768px) {
+    .faq-column {
+        min-width: calc(50% - 20px); /* 2 columns on medium screens */
+    }
+    .get-started-button{
+        padding: 10px 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .faq-column {
+        min-width: 100%; /* 1 column on small screens */
+    }
+    .get-started-button{
+        padding: 10px 20px;
+    }
+    .footer{
+        padding-left: 30px;
+    }
+}
+        @media screen and (max-width: 950px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            .logos {
+                flex-direction: column;
+                align-items: center;
+            }
+           
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav id="menu">
+            <ul>
+                <li ><a href="#" style="text-decoration: none; color: black;"><i class="fa-solid fa-money-check-dollar"></i>Tax<span style="color: #007BFF;">Pal</span></a></li>
+                <li><a href="#" style="text-decoration: none; color: black;">Features</a></li>
+                <li><a href="#" style="text-decoration: none; color: black;">Testimonials</a></li>
+                <li><a href="#" style="text-decoration: none; color: black;">Pricing</a></li>
+            </ul>
+        </nav>
+        <div class="buttons">
+            <button class="signin-button" onclick="toggleForm()">Sign In</button>
+            <button class="blue-button">Get Started Today</button>
+        </div>
+    </header>
+    <section class="article" ">
+        <h1>Accounting <span>made simple</span> for small businesses.</h1>
+        <p>
+            Most bookkeeping software is accurate, but hard to use. We make the opposite trade-off, and hope you don't get
+            audited.
+        </p>
+        <div class="article-buttons">
+            <button class="black-button">Get 6 months free</button>
+            <button class="transparent-button"><i class="fa-brands fa-youtube"></i>Watch Video</button>
+        </div>
+        <p>Trusted by these six companies so far</p>
+        <div class="logos">
+            <img src="transistor.7274e6c3.svg" alt="Transistor">
+            <img src="tuple.74eb0ae0.svg" alt="Tuple">
+            <img src="statickit.d7937794 (1).svg" alt="Statickit">
+            <img src="mirage.18d2ec4e.svg" alt="Mirage">
+            <img src="laravel.7deed17e.svg" alt="Laravel">
+            <img src="statamic.6da5ebfb.svg" alt="statamic">
+        </div>
+    </section>
+<h2 style="text-align: center; font-size: xx-large;">Everything you need to run your books.</h2>
+<p>Well everything you need if you aren’t that picky about minor details like tax compliance.</p>
+    <section class="main-section" >
+        <div class="side-menu">
+            <button onclick="showDetails('payroll')">Payroll</button>
+            <button onclick="showDetails('claim-expenses')">Claim Expenses</button>
+            <button onclick="showDetails('vat-handling')">VAT Handling</button>
+            <button onclick="showDetails('reporting')">Reporting</button>
+        </div>
+        <div class="details-card" id="details-card">
+        </div>
+    </section>
+    <h2 style="text-align: center; font-size: xx-large;">Simplify Everyday business tasks </h2>
+    <p>Because you’d probably be a little confused if we suggested you complicate your everyday business tasks instead.</p>
+    <section class="three-columns">
+        <div class="column" onclick="showImage('reporting')">Reporting
+            <p>Stay on top of things with always up-to-date reporting features <br>
+            We talked about reporting in the section above but we needed three items here, so mentioning it one more time for posterity
+            </p>
+        </div>
+        <div class="column" onclick="showImage('inventory')">Inventory
+            <p>Never loose track of whats in stock with accurate inventory tracking <br>
+                We dont offer this as part of our software but that statement is inaugrably true. Acurate inventory tracking will help you for sure.
+                </p>
+        </div>
+        <div class="column" onclick="showImage('contacts')">Contacts
+            <p>Organize all of your contacts, service providers and invoices in one place <br>
+            this also isnt actually a feature it is just some friendly advice. We definately recommend that you do this you all feel really organized and professional.
+            </p>
+        </div>
+    </section>
+    <div class="image-display">
+        <img id="reporting-image" src="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fprofit-loss.2a2f85d5.png&w=1920&q=75" alt="Reporting Image">
+        <img id="inventory-image" src="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Finventory.14ec7758.png&w=1920&q=75" alt="Inventory Image">
+        <img id="contacts-image" src="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcontacts.a61dce95.png&w=1920&q=75" alt="Contacts Image">
+    </div>
+<section>
+    <h2 style="text-align: center; font-size: xx-large;">Loved by busineeses worldwide</h2>
+    <p>Our software is so simple that people can’t help but fall in love with it. Simplicity is easy when you just skip tons of mission-critical features.</p>
+    <div class="three-columns">
+        <div class="column testimonial-card">
+            <p>TaxPal is so easy to use I can’t help but wonder if it’s really doing the things the government expects me to do.</p>
+            <div class="customer-info">
+                <img src="https://photosnow.org/wp-content/uploads/2024/04/beautiful-girl-photo_13.jpg" alt="Customer 1" class="customer-img">
+                <p>Sheryl Berge<br>
+                CEO at Lynch LLC></p>
+            </div>
+        </div>
+        <div class="column testimonial-card">
+            <p>The best part about TaxPal is every time I pay my employees, my bank balance doesn’t go down like it used to. Looking forward to spending this extra cash when I figure out why my card is being declined.</p>
+            <div class="customer-info">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj7jtkDJmQTSCgC2SVtuTzqV0D2_xQRVLnPQ&s" alt="Customer 2" class="customer-img">
+                <p>Leland Kiehn<br>
+                Founder of Kiehn and Sons</p>
+            </div>
+        </div>
+        <div class="column testimonial-card">
+            <p>I used to have to remit tax to the EU and with TaxPal I somehow don’t have to do that anymore. Nervous to travel there now though.</p>
+            <div class="customer-info">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS087meEks4Mc-31weQ32gRNo3pwyeZ_LpbqA&s" alt="Customer 3" class="customer-img">
+                <p>Peter Renolds<br>
+                Founder of West Inc</p>
+            </div>
+        </div>
+    </div>
+    <div class="three-columns">
+        <div class="column testimonial-card">
+            <p>I’m trying to get a hold of someone in support, I’m in a lot of trouble right now and they are saying it has something to do with my books. Please get back to me right away.</p>
+            <div class="customer-info">
+                <img src="https://i.pinimg.com/originals/02/12/14/0212146eff72c5b094be1b6bb1ff9c01.jpg" alt="Customer 4" class="customer-img">
+                <p>Amy Hahn <br>
+                Director at Velocity Industries</p>
+            </div>
+        </div>
+        <div class="column testimonial-card">
+            <p>There are so many things I had to do with my old software that I just don’t do at all with TaxPal. Suspicious but I can’t say I don’t love it.</p>
+            <div class="customer-info">
+                <img src="https://thumbs.dreamstime.com/z/handsome-teenaged-american-boy-blond-hair-handsome-american-teenager-boy-blond-hair-gray-t-shirt-smiling-210734321.jpg" alt="Customer 5" class="customer-img">
+                <p> John Doe <br>
+                    COO at Armstrong Inc
+                </p>
+            </div>
+        </div>
+        <div class="column testimonial-card">
+            <p>This is the fourth email I’ve sent to your support team. I am literally being held in jail for tax fraud. Please answer your damn emails, this is important.</p>
+            <div class="customer-info">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx3AG3JpROddmpR5bU7Rd7LdH_bzjOdrsttg&s" alt="Customer 6" class="customer-img">
+                <p>Amy Hahn <br>
+                Director at Velocity Industries</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section style="background-color: rgb(2, 2, 51);">
+    <h2 style="text-align: center; color:white; font-size:xx-large;">Simple pricing, for everyone.</h2>
+    <p style="color: #fff;">It doesn’t matter what size your business is, our software won’t work well for you.</p>
+    <div class="pricing-container">
+        <div class="pricing-column">
+            <h3 style="text-align: center;">$9</h3>
+            <p>Starter</p>
+            <p>Good for anyone who is self-employed and just getting started.</p>
+            <button class="get-started-button">Get Started</button>
+            <ol style="list-style: disc; padding: 20px;">
+                <li>Send 10 quotes and invoices</li>
+                <li>Connect up to 2 bank accounts</li>
+                <li>Track up to 15 expenses per month</li>
+                <li>Manual payroll support</li>
+                <li>Export up to 3 reports</li>
+            </ol>
+        </div>
+        <div class="pricing-column pricing-column-highlight">
+            <h3 style="text-align: center;">$15</h3>
+            <p>Small Business</p>
+            <p>Perfect for small/medium sized businesses</p>
+            <button class="get-started-button">Get Started</button>
+            
+            <ol style="list-style: disc; padding: 20px;">
+                <li>Send 25 quotes and invoices</li>
+                <li>Connect up to 5 bank accounts</li>
+                <li>Track up to 50 expenses per month</li>
+                <li>Automated payroll support</li>
+                <li>Export up to 12 reports</li>
+                <li>Bulk reconcile transactions</li>
+                <li>Track in multiple currencies</li>
+            </ol>
+        </div>
+        <div class="pricing-column">
+            <h3 style="text-align: center;">$39</h3>
+            <p>Enterprise</p>
+            <p>For even the biggest enterprise companies.</p>
+            <button class="get-started-button">Get Started</button>
+            <ol style="list-style: disc;">
+                <li>Send unlimited quotes and invoices</li>
+                <li>Connect up to 15 bank accounts</li>
+                <li>Track up to 200 expenses per months</li>
+                <li>Automated payroll support</li>
+                <li>Export up to 25 reports, including TPS</li>
+            </ol>
+        </div>
+    </div>
+</section>
+<section>
+    <h2 style="font-size: xx-large; text-align: center;">Frequently asked questions</h2>
+    <p>If you can’t find what you’re looking for, email our support team and if you’re lucky someone will get back to you.</p>
+    <div class="faq-container">
+        <div class="faq-column">
+            <div class="faq-item">
+                <h3>Does TaxPal handle VAT?</h3>
+                <p>Well no, but if you move your company offshore you can probably ignore it.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What was that testimonial about tax fraud all about?</h3>
+                <p>TaxPal is just a software application, ultimately your books are your responsibility.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do you generate reports?</h3>
+                <p>You just tell us what data you need a report for, and we get our kids to create beautiful charts for you using only the finest crayons.</p>
+            </div>
+        </div>
+        <div class="faq-column">
+            <div class="faq-item">
+                <h3>Can I pay for my subscription via purchase order?</h3>
+                <p>Absolutely, we are happy to take your money in all forms.</p>
+            </div>
+            <div class="faq-item">
+                <h3>TaxPal sounds horrible but why do I still feel compelled to purchase?</h3>
+                <p>This is the power of excellent visual design. You just can’t resist it, no matter how poorly it actually functions.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can we expect more inventory features?</h3>
+                <p>In life it’s really better to never expect anything at all.</p>
+            </div>
+        </div>
+        <div class="faq-column">
+            <div class="faq-item">
+                <h3>How do I apply for a job at TaxPal?</h3>
+                <p>We only hire our customers, so subscribe for a minimum of 6 months and then let’s talk.</p>
+            </div>
+            <div class="faq-item">
+                <h3>I found other companies called TaxPal, are you sure you can use this name?</h3>
+                <p>Honestly not sure at all. We haven’t actually incorporated or anything, we just thought it sounded cool and made this website.</p>
+            </div>
+            <div class="faq-item">
+                <h3>I lost my password, how do I get into my account?</h3>
+                <p>Send us an email and we will send you a copy of our latest password spreadsheet so you can find your information.</p>
+            </div>
+        </div>
+    </div>
+</section>
+    <div class="form-container" id="form-container">
+        <h2>Sign In to Your Account</h2>
+        <form id="sign-in-form">
+            <input type="email" placeholder="Email Address" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Sign In</button>
+            <div class="signup-link">
+                Don't have an account? <a onclick="showSignUpForm()">Sign Up for free</a>
+            </div>
+        </div>
+        <section class="end-section">
+            <div class="brand-title">Tax <span style="color: #007BFF;">Pal</span></div>
+            <nav class="main-navigation">
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                </ul>
+            </nav>
+        </section>
+        <footer>Copyright © 2024 TaxPal. All rights reserved.
+            <i style="padding-left: 1600px; padding-right: 20px;" class="fa-brands fa-x-twitter"></i>
+            <i class="fa-brands fa-github"></i>
+        </footer>
+        <script>
+            function toggleForm() {
+                var formContainer = document.getElementById("form-container");
+                if (formContainer.style.display === "none" || formContainer.style.display === "") {
+                    formContainer.style.display = "block";
+                } else {
+                    formContainer.style.display = "none";
+                }
+            }
+    
+            function showSignUpForm() {
+                var formContainer = document.getElementById("form-container");
+                formContainer.innerHTML = `
+                    <h2>Sign Up for Free</h2>
+                    <form id="sign-up-form">
+                        <div class="first-last-name">
+                            <input type="text" placeholder="First Name" required>
+                            <input type="text" placeholder="Last Name" required>
+                        </div>
+                        <input type="email" placeholder="Email Address" required>
+                        <input type="password" placeholder="Password" required>
+                        <label for="referral">How did you hear about us?</label>
+                        <select id="referral" required>
+                            <option value="">Select an option</option>
+                            <option value="social-media">Social Media</option>
+                            <option value="friend">Friend</option>
+                            <option value="search-engine">Search Engine</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <button type="submit">Sign Up</button>
+                    </form>
+                    <div class="signup-link">
+                        Already have an account? <a onclick="toggleForm()">Sign In</a>
+                    </div>`;
+            }
+    
+            function showDetails(section) {
+                const detailsCard = document.getElementById('details-card');
+                let content = '';
+    
+                switch (section) {
+                    case 'payroll':
+                        content = `
+                            <h2>Payroll</h2>
+                            <p>Manage employee payroll, track salaries, and handle taxes.</p>
+                           <img src="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fpayroll.517af4e7.png&w=2048&q=75">;`
+                        break;
+                    case 'claim-expenses':
+                        content = `
+                            <h2>Claim Expenses</h2>
+                            <p>Track and manage your business expenses easily.</p>
+                              <img src="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fexpenses.3f331919.png&w=2048&q=75">`
+                        break;
+                    case 'vat-handling':
+                        content = `
+                            <h2>VAT Handling</h2>
+                            <p>Efficiently manage VAT and ensure compliance.</p>
+                            <img src="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fvat-returns.7402820f.png&w=2048&q=75">`
+                        break;
+                    case 'reporting':
+                        content = `
+                            <h2>Reporting</h2>
+                            <p>Generate detailed financial reports and insights.</p>
+                            <img src="https://salient.tailwindui.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Freporting.2ad6f065.png&w=2048&q=75">`
+                        break;
+                }
+    
+                detailsCard.innerHTML = content;
+            }
+            function showImage(section) {
+            // Hide all images
+            document.getElementById('reporting-image').classList.remove('active');
+            document.getElementById('inventory-image').classList.remove('active');
+            document.getElementById('contacts-image').classList.remove('active');
+
+            // Show the selected image
+            if (section === 'reporting') {
+                document.getElementById('reporting-image').classList.add('active');
+            } else if (section === 'inventory') {
+                document.getElementById('inventory-image').classList.add('active');
+            } else if (section === 'contacts') {
+                document.getElementById('contacts-image').classList.add('active');
+            }
+        }
+        </script>
+    </body>
+    </html>
